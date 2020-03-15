@@ -75,3 +75,10 @@ img {
     border-color: #2f2a2d;
     color: #2f2a2d;
 }
+.error {
+    border-color: red;
+}
+
+.contacts {
+    border-color: darkgrey;
+}

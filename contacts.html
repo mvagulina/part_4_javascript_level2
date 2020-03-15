@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Contacts</title>
+    <script>
+        function checkFields() {
+            let name = document.getElementById('name');
+            if ((/[\W\d]+/ig).test(name.value))
+                name.className = "error";
+            else
+                name.className = "contacts";
+        }
+    </script>
+</head>
+<body>
+    <h2>Напишите нам:</h2>
+    <form action="/">
+        <label for="name">Name</label><input type="text" id="name" class="contacts"><br>
+        <label for="phone">Phone</label><input type="text" id="phone"><br>
+        <label for="email">E-mail</label>
+        <input type="email" id="email"><br>
+        <label for="msg">Message</label><textarea name="" id="msg" cols="30" rows="10"></textarea><br>
+        <input type="button" value="Check" onclick="checkFields()">
+    </form>
+</body>
+</html>
