@@ -1,12 +1,32 @@
 [
   {
-    "id": 123,
-    "name": "Keyboard",
+    "id": 1,
+    "name": "Product1",
     "price": 45600
   },
   {
-    "id": 456,
-    "name": "Mouse",
+    "id": 2,
+    "name": "Product2",
     "price": 1000
+  },
+  {
+    "id": 3,
+    "name": "Product3",
+    "price": 20000
+  },
+  {
+    "id": 4,
+    "name": "Product4",
+    "price": 400
+  },
+  {
+    "id": 5,
+    "name": "Product5",
+    "price": 300
+  },
+  {
+    "id": 6,
+    "name": "Product6",
+    "price": 200
   }
 ]
