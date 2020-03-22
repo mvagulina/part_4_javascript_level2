@@ -1,0 +1,118 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>INTERIOR</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700&display=swap" rel="stylesheet"> </head>
+
+<body>
+    <div class="container">
+        <div class="product-header padding-98">
+            <div class="header">
+                <a href="index.html"><img src="img/logo.svg" alt="logo"></a>
+                <ul class="menu clearfix">
+                    <li class="menu-item"><a href="index.html" class="menu-link">Главная</a></li>
+                    <li class="menu-item"><a href="products.html" class="menu-link">Товары</a></li>
+                    <li class="menu-item"><a href="#" class="menu-link menu-link-active">Контакты</a></li>
+                    <li class="menu-item">
+                        <a href="#"><img src="img/search.png" alt="search" class="menu-search"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="product-h1 clearfix">Контакты</div>
+        </div>
+        <div class="send-message padding-98 margin-120">
+            <form id="contactUsForm" class="send-message-form" action="#">
+                <div class="input-label">Имя</div>
+                <input class="contact-us-input" type="text" name="name" placeholder="Ваше имя">
+                <div class="input-label">Телефон</div>
+                <input class="contact-us-input" type="text" name="phone" placeholder="Телефон в формате +7(000)000-0000">
+                <div class="input-label">E-mail</div>
+                <input class="contact-us-input" type="text" name="email" placeholder="mymail@mail.ru">
+                <div class="input-label">Сообщение</div>
+                <textarea rows="3" class="contact-us-input contact-us-message" type="text" name="message"></textarea>
+                <button class="send-button">Отправить</button>
+            </form>
+        </div>
+        <div class="contacts padding-98 margin-120">
+            <div class="contact-item"> <img class="loc-img" src="img/location-point.png" alt="">
+                <div class="contacts-h1">California</div>
+                <div class="contacts-text-h3">Phone:</div>
+                <div class="contacts-text">1900 - 1234 -5678</div>
+                <div class="contacts-text-h3">Email:</div>
+                <div class="contacts-text">info@interior.com</div>
+                <div class="contacts-text">1900 - 1234 -5678</div>
+                <div class="contacts-text-h3">Address:</div>
+                <div class="contacts-text">12 W 1st St, 90001 Los Angeles, California</div>
+            </div>
+            <div class="contact-item"> <img class="loc-img" src="img/location-point.png" alt="">
+                <div class="contacts-h1">California</div>
+                <div class="contacts-text-h3">Phone:</div>
+                <div class="contacts-text">1900 - 1234 -5678</div>
+                <div class="contacts-text-h3">Email:</div>
+                <div class="contacts-text">info@interior.com</div>
+                <div class="contacts-text">1900 - 1234 -5678</div>
+                <div class="contacts-text-h3">Address:</div>
+                <div class="contacts-text">12 W 1st St, 90001 Los Angeles, California</div>
+            </div>
+            <div class="contact-item"> <img class="loc-img" src="img/location-point.png" alt="">
+                <div class="contacts-h1">California</div>
+                <div class="contacts-text-h3">Phone:</div>
+                <div class="contacts-text">1900 - 1234 -5678</div>
+                <div class="contacts-text-h3">Email:</div>
+                <div class="contacts-text">info@interior.com</div>
+                <div class="contacts-text">1900 - 1234 -5678</div>
+                <div class="contacts-text-h3">Address:</div>
+                <div class="contacts-text">12 W 1st St, 90001 Los Angeles, California</div>
+            </div>
+        </div>
+        <div class="footer padding-98">
+            <div class="footer-main">
+                <div class="footer-contactus">
+                    <div class="footer-h1">Contact Us</div>
+                    <div class="footer-text">132A Bridge Road Richmond VIC Australia.
+                        <br>
+                        <br>Talk to us on 1300 132
+                        <br>info@interior.com</div>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-h1">Useful Information</div>
+                    <ul class="footer-terms">
+                        <li><a href="#" class="footer-info-item">Sales terms</a></li>
+                        <li><a href="#" class="footer-info-item">Customer care</a></li>
+                        <li><a href="#" class="footer-info-item">Delivery</a></li>
+                        <li><a href="#" class="footer-info-item">Architect accounts</a></li>
+                        <li><a href="#" class="footer-info-item">Careers</a></li>
+                        <li><a href="#" class="footer-info-item">Exchanges & returns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-intouch">
+                    <div class="footer-h1">Let’s Stay in Touch!</div>
+                    <div class="footer-text">Suscribe to know about our latest news, products and special offers just for suscribers.</div>
+                    <div class="footer-email">
+                        <input class="footer-email" type="email" placeholder="input email address"> </div>
+                </div>
+            </div>
+            <div class="footer-copy">
+                <div class="footer-text-1">© Copyright - INTERIOR 2016. All Rights Reserved.</div> <img src="img/social-links.png" alt="">
+                <div class="footer-text-1">Terms & Conditions / Privacy policy & Cookies</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/Validator.js"></script>
+    <script>
+        window.onload = () => {
+            const contuctUsFormName = 'contactUsForm';
+            document.getElementById(contuctUsFormName).addEventListener('submit', e => {
+                let validator = new Validator(contuctUsFormName);
+                if (!validator.valid) {
+                    e.preventDefault();
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
