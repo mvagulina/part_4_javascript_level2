@@ -17,7 +17,11 @@
                     <li class="menu-item"><a href="#" class="menu-link menu-link-active">Товары</a></li>
                     <li class="menu-item"><a href="contacts.html" class="menu-link">Контакты</a></li>
                     <li class="menu-item">
-                        <a href="#"><img src="img/search.png" alt="search" class="menu-search"></a>
+                        <a href="#" @click="showCart = !showCart"><img src="img/trash-can-outline.png" class="menu-search"></a>
+                        <cart :cart="cart"
+                            :img="imgCart"
+                            :visibility="showCart">
+                        </cart>
                     </li>
                 </ul>
             </div>
@@ -25,7 +29,7 @@
         </div>
         <ul class="product-menu">
 <!--            <li class="product-menu-item"><a href="#" class="product-menu-link">Все</a></li>-->
-            <li class="product-menu-item"><input class="contact-us-input" id="search" type="text"><a href="#" @click="searchProducts()"><img src="img/search.png" alt="search" class="menu-search"></a></li>
+            <li class="product-menu-item"><search :search-id="searchId" @search="searchProducts"></search></li>
 <!--
             <li class="product-menu-item"><a href="#" class="product-menu-link">Дом</a></li>
             <li class="product-menu-item"><a href="#" class="product-menu-link">Офис</a></li>
@@ -40,7 +44,7 @@
                    <img v-bind:src="'img/catalog/product-'+ product.id + '.jpg'">
                    <div>
                        <h3>{{product.name}}</h3>
-                        <p>{{product.price}} $</p>
+                        <span>{{product.price}} $</span>
                         <button class="buy-btn" @click="addProduct(product)">Купить</button>
                    </div>
                </div>
@@ -110,6 +114,9 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/CartComponent.js"></script>
+    <script src="js/SearchComponent.js"></script>
+    <script src="js/ProductComponent.js"></script>
     <script src="js/products.js"></script>
 </body>
 

@@ -311,6 +311,7 @@ body {
 }
 .product:hover {
   opacity: 1;
+  outline: 1px solid black;
 }
 .hot-deals {
   height: 800px;

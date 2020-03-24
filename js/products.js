@@ -5,7 +5,12 @@ const app = new Vue({
     data: {
         catalogUrl: '/catalog.json',
         products: [],
-        filter: new RegExp('', 'i')
+        cartUrl: '/cart.json',
+        cart: [],
+        showCart: false,
+        imgCart: 'https://placehold.it/50x100',
+        filter: new RegExp('', 'i'),
+        searchId: 'search'
     },
     
     methods: {
@@ -32,13 +37,24 @@ const app = new Vue({
         },
         
         searchProducts() {
-            let searchField = document.getElementById('search');
+            let searchField = document.getElementById(this.searchId);
             this.filter = new RegExp(searchField.value, 'i');
             this.getProducts();
+        },
+        
+        getCart() {
+            this.getJson(`${API + this.cartUrl}`)
+            .then(data => {
+                for (let item of data) {
+                    this.$data.cart.push(item);
+                }
+            });
         }
+        
     },
     
     mounted() {
         this.getProducts();
+        this.getCart();
     }
 });
