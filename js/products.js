@@ -8,7 +8,7 @@ const app = new Vue({
         cartUrl: '/cart.json',
         cart: [],
         showCart: false,
-        imgCart: 'https://placehold.it/50x100',
+        cartSummary: 0,
         filter: new RegExp('', 'i'),
         searchId: 'search'
     },
@@ -33,7 +33,15 @@ const app = new Vue({
         },
         
         addProduct(product) {
-            console.log(product.id);
+            console.log(product);
+            let find = this.cart.find(el => el.id === product.id);
+            if (find) {
+                find.quantity++;
+            } else {
+                const newCartItem = Object.assign({quantity: 1}, product);
+                this.cart.push(newCartItem);
+            }
+            this.getCartSummary();
         },
         
         searchProducts() {
@@ -48,7 +56,18 @@ const app = new Vue({
                 for (let item of data) {
                     this.$data.cart.push(item);
                 }
+                this.getCartSummary();
             });
+        },
+        
+        getCartSummary() {
+            this.cartSummary = 0;
+            this.cart.forEach(item => this.cartSummary += (item.price * item.quantity));
+        },
+        
+        removeCartItem(product) {
+            this.cart.splice(this.cart.indexOf(product), 1);
+            this.getCartSummary();
         }
         
     },

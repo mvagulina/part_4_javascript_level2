@@ -44,6 +44,13 @@ body {
     align-content: space-between;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
 .common-h1 {}
 
 .slider {
@@ -348,6 +355,7 @@ body {
 .product {
     height: 450px;
     width: 370px;
+    margin-top: 5px;
 }
 
 .product:hover {
@@ -691,7 +699,7 @@ body {
 
 .products-list {
     width: 1170px;
-    height: 1569px;
+    height: auto;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -814,4 +822,47 @@ body {
 }
 .menu-search {
     padding-left: 10px;
+}
+
+.cart-block {
+    position: relative;
+}
+
+.cart {
+    width: 300px;
+    height: auto;
+    border: 1px solid black;
+    padding: 10px;
+    position: absolute;
+    background-color: white;
+    box-sizing: border-box;
+    right: 0;
+}
+
+.cart-item {
+    width: 280px;
+    .flex-space-between;
+    align-items: stretch;
+}
+
+.cart-item-img {
+    width: 90px;
+}
+
+.cart-item-sum {
+    font-weight: @bold-font-weight;
+}
+
+.cart-item-right-block {
+    .flex-column;
+    justify-content: space-around;
+}
+
+.cart-item-delete {
+    align-self: flex-end;
+}
+
+.cart-empty {
+    .menu-link;
+    text-align: center;
 }

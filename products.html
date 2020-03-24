@@ -18,10 +18,13 @@
                     <li class="menu-item"><a href="contacts.html" class="menu-link">Контакты</a></li>
                     <li class="menu-item">
                         <a href="#" @click="showCart = !showCart"><img src="img/trash-can-outline.png" class="menu-search"></a>
+                        <div class="cart-block">
                         <cart :cart="cart"
-                            :img="imgCart"
-                            :visibility="showCart">
+                            :visibility="showCart"
+                            :summary="cartSummary"
+                            @remove="removeCartItem">
                         </cart>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -29,7 +32,12 @@
         </div>
         <ul class="product-menu">
 <!--            <li class="product-menu-item"><a href="#" class="product-menu-link">Все</a></li>-->
-            <li class="product-menu-item"><search :search-id="searchId" @search="searchProducts"></search></li>
+            <li class="product-menu-item">
+                <search 
+                    :search-id="searchId" 
+                    @search="searchProducts">
+                </search>
+            </li>
 <!--
             <li class="product-menu-item"><a href="#" class="product-menu-link">Дом</a></li>
             <li class="product-menu-item"><a href="#" class="product-menu-link">Офис</a></li>
@@ -39,7 +47,10 @@
 -->
         </ul>
         <div class="padding-98">
-            <products :products="products"></products>
+            <products 
+                @add-product="addProduct"
+                :products="products">
+            </products>
         </div>
         </div>
         <div class="product-refresh">

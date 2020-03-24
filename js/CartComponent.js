@@ -1,28 +1,29 @@
 Vue.component('cart', {
-    props: ['cart', 'img', 'visibility'],
+    props: ['cart', 'visibility', 'summary'],
     template: `
         <div class="cart" v-show="visibility">
-            <cart-item v-for="item of cart" :key="item.id_product" :img="img" :cart-item="item">
+            <cart-item v-for="item of cart" :key="item.id_product" :cart-item="item">
             </cart-item>
-        </div>
-    `
+            <div v-if="cart.length == 0" class="cart-empty">Корзина пуста</div>
+            <div class="cart-summary">Итого: {{summary}}</div>
+        </div>`
 });
 
 Vue.component('cart-item', {
-    props: ['img', 'cartItem'],
+    props: ['cartItem'],
     template: `
         <div class="cart-item">
-            <div class="cart-item">
-                <img :src="img">
-                <div class="product-desc">
-                    <div class="product-title">{{ cartItem.name }}</div>
-                    <div class="product-quantity">Quantity: {{ cartItem.quantity }}</div>
-                    <div class="product-single-price">$ {{ cartItem.price }} each</div>
-                </div>
+            <div class="cart-item-left-block">
+                <img class="cart-item-img" v-bind:src="'img/catalog/product-' + cartItem.id + '.jpg'">
             </div>
-            <div class="right-block">
-                <div class="product-price">{{cartItem.quantity*cartItem.price}}</div>
-                <button class="del-btn" @click="$parent.$emit('remove', cartItem)">&times;</button>
+            <div class="">
+                <h3>{{cartItem.name}}</h3>
+                <div class="product-quantity">Количество: {{cartItem.quantity}}</div>
+                <div class="product-single-price">Цена: {{cartItem.price}}</div>
+            </div>
+            <div class="cart-item-right-block">
+                <button class="cart-item-delete" @click="$parent.$emit('remove', cartItem)">&times; </button>
+                <div class="cart-item-sum">{{cartItem.quantity*cartItem.price}}</div>
             </div>
         </div>
     `
