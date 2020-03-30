@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>INTERIOR</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <div id="container" class="container">
+        <div class="product-header padding-98">
+            <div class="header">
+                <a href="index.html"><img src="img/logo.svg" alt="logo"></a>
+                <ul class="menu clearfix">
+                    <li class="menu-item"><a href="index.html" class="menu-link">Главная</a></li>
+                    <li class="menu-item"><a href="#" class="menu-link menu-link-active">Товары</a></li>
+                    <li class="menu-item"><a href="contacts.html" class="menu-link">Контакты</a></li>
+                    <li class="menu-item">
+                        <a href="#" @click="showCart = !showCart"><img src="img/trash-can-outline.png" class="menu-search"></a>
+                        <div class="cart-block">
+                        <cart :cart="cart"
+                            :visibility="showCart"
+                            :summary="cartSummary"
+                            @remove="removeCartItem">
+                        </cart>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="product-h1 clearfix">Товары</div>
+        </div>
+        <ul class="product-menu">
+<!--            <li class="product-menu-item"><a href="#" class="product-menu-link">Все</a></li>-->
+            <li class="product-menu-item">
+                <search 
+                    :search-id="searchId" 
+                    @search="searchProducts">
+                </search>
+            </li>
+<!--
+            <li class="product-menu-item"><a href="#" class="product-menu-link">Дом</a></li>
+            <li class="product-menu-item"><a href="#" class="product-menu-link">Офис</a></li>
+            <li class="product-menu-item"><a href="#" class="product-menu-link">Комплектующие</a></li>
+            <li class="product-menu-item"><a href="#" class="product-menu-link">Современное</a></li>
+            <li class="product-menu-item"><a href="#" class="product-menu-link">Классика</a></li>
+-->
+        </ul>
+        <div class="padding-98">
+            <products 
+                @add-product="addProduct"
+                :products="products">
+            </products>
+        </div>
+        </div>
+        <div class="product-refresh">
+            <a href="#"><img src="img/refresh.png" alt=""></a>
+        </div>
+        <div class="exclusive">
+            <div class="promo-product">
+            <div class="flex-space-between">
+                <div class="promo-item-left">
+                    <div class="promo-h1">exclusive</div>
+                    <div class="promo-h2">Fishnet Chair</div>
+                    <p class="promo-descr">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black or highly polished chrome.</p> <a href="product-detail.html" class="button">Order Us <img src="img/arrow-small.svg" alt=""></a> </div>
+                <div class="promo-item-right">
+                    <div class="promo-h1">exclusive</div>
+                    <div class="promo-h2">Fishnet Chair</div>
+                    <p class="promo-descr">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt powder-coated black or highly polished chrome.</p> <a href="product-detail.html" class="button">Order Us <img src="img/arrow-small.svg" alt=""></a> </div>
+            </div>
+        </div>
+        </div>
+        <div class="footer padding-98">
+            <div class="footer-main">
+                <div class="footer-contactus">
+                    <div class="footer-h1">Contact Us</div>
+                    <div class="footer-text">132A Bridge Road Richmond VIC Australia.
+                        <br>
+                        <br>Talk to us on 1300 132
+                        <br>info@interior.com</div>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-h1">Useful Information</div>
+                    <ul class="footer-terms">
+                        <li><a href="#" class="footer-info-item">Sales terms</a></li>
+                        <li><a href="#" class="footer-info-item">Customer care</a></li>
+                        <li><a href="#" class="footer-info-item">Delivery</a></li>
+                        <li><a href="#" class="footer-info-item">Architect accounts</a></li>
+                        <li><a href="#" class="footer-info-item">Careers</a></li>
+                        <li><a href="#" class="footer-info-item">Exchanges & returns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-intouch">
+                    <div class="footer-h1">Let’s Stay in Touch!</div>
+                    <div class="footer-text">Suscribe to know about our latest news, products and special offers just for suscribers.</div>
+                    <div class="footer-email"><input class="footer-email" type="email" placeholder="input email address"></div>
+                </div>
+            </div>
+            <div class="footer-copy">
+                <div class="footer-text-1">© Copyright - INTERIOR 2016. All Rights Reserved.</div>
+                <img src="img/social-links.png" alt="">
+                <div class="footer-text-1">Terms & Conditions  /  Privacy policy & Cookies</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/CartComponent.js"></script>
+    <script src="js/SearchComponent.js"></script>
+    <script src="js/ProductComponent.js"></script>
+    <script src="js/products.js"></script>
+</body>
+
+</html>
