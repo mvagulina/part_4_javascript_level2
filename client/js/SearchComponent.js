@@ -7,7 +7,8 @@ Vue.component('search', {
     `,
     methods: {
         click() {
-            this.$emit('search');
+            //this.$emit('search');
+            this.$parent.$refs.products.searchProducts();
         }
     }
 });

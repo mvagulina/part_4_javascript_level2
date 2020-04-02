@@ -3,12 +3,10 @@ const API = 'https://raw.githubusercontent.com/mvagulina/part_4_javascript_level
 const app = new Vue({
     el: '#container',
     data: {
-        products: [],
         cartUrl: '/cart.json',
         cart: [],
         showCart: false,
         cartSummary: 0,
-        filter: new RegExp('', 'i'),
         searchId: 'search'
     },
     
@@ -17,18 +15,6 @@ const app = new Vue({
             return fetch(url)
                 .then(result => result.json())
                 .catch(error => console.log(error));
-        },
-        
-        getProducts() {
-            this.products.length = 0;
-            this.getJson(`/products`)
-            .then(data => {
-                for(let el of data) {
-                    if (this.filter.test(el.name)) {
-                        this.products.push(el);
-                    }
-                } 
-            });
         },
         
         addProduct(product) {
@@ -41,12 +27,6 @@ const app = new Vue({
                 this.cart.push(newCartItem);
             }
             this.getCartSummary();
-        },
-        
-        searchProducts() {
-            let searchField = document.getElementById(this.searchId);
-            this.filter = new RegExp(searchField.value, 'i');
-            this.getProducts();
         },
         
         getCart() {
@@ -72,7 +52,6 @@ const app = new Vue({
     },
     
     mounted() {
-        this.getProducts();
         this.getCart();
     }
 });

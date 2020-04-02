@@ -35,7 +35,7 @@
             <li class="product-menu-item">
                 <search 
                     :search-id="searchId" 
-                    @search="searchProducts">
+                    @search="this.$parent.$refs.products.searchProducts()">
                 </search>
             </li>
 <!--
@@ -49,7 +49,9 @@
         <div class="padding-98">
             <products 
                 @add-product="addProduct"
-                :products="products">
+                :search-id="searchId"
+                ref="products"
+            >
             </products>
         </div>
         </div>
