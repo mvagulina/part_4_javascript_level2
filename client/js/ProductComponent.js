@@ -33,12 +33,14 @@ Vue.component('products', {
 
 Vue.component('product', {
     props: ['product'],
-    template: `<div class="product">
-                 <img v-bind:src="'img/catalog/product-'+ product.id + '.jpg'">
-                 <div>
-                   <h3>{{product.name}}</h3>
-                   <span>{{product.price}} $</span>
-                   <button class="buy-btn" @click="$parent.$emit('add-product', product)">Купить</button>
-                 </div>
-               </div>`
+    template: `
+        <div class="product">
+            <img v-bind:src="'img/catalog/product-'+ product.id + '.jpg'">
+            <div>
+                <h3>{{product.name}}</h3>
+                <span>{{product.price}} $</span>
+                <button class="buy-btn" @click="$root.$refs.cart.addProduct(product)">Купить</button>
+            </div>
+        </div>
+    `
 });

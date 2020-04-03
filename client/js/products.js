@@ -1,12 +1,7 @@
-const API = 'https://raw.githubusercontent.com/mvagulina/part_4_javascript_level2/master/json';
-
 const app = new Vue({
     el: '#container',
     data: {
-        cartUrl: '/cart.json',
-        cart: [],
         showCart: false,
-        cartSummary: 0,
         searchId: 'search'
     },
     
@@ -16,42 +11,40 @@ const app = new Vue({
                 .then(result => result.json())
                 .catch(error => console.log(error));
         },
-        
-        addProduct(product) {
-            console.log(product);
-            let find = this.cart.find(el => el.id === product.id);
-            if (find) {
-                find.quantity++;
-            } else {
-                const newCartItem = Object.assign({quantity: 1}, product);
-                this.cart.push(newCartItem);
-            }
-            this.getCartSummary();
+
+        postJson(url, data) {
+            return fetch(url, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .catch(error => console.log(error));
         },
-        
-        getCart() {
-            this.getJson(`${API + this.cartUrl}`)
-            .then(data => {
-                for (let item of data) {
-                    this.$data.cart.push(item);
-                }
-                this.getCartSummary();
-            });
+
+        putJson(url, data) {
+            return fetch(url, {
+                method: 'PUT',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .catch(error => console.log(error));
         },
-        
-        getCartSummary() {
-            this.cartSummary = 0;
-            this.cart.forEach(item => this.cartSummary += (item.price * item.quantity));
-        },
-        
-        removeCartItem(product) {
-            this.cart.splice(this.cart.indexOf(product), 1);
-            this.getCartSummary();
+
+        deleteJson(url, data) {
+            return fetch(url, {
+                method: 'DELETE',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .catch(error => console.log(error));
         }
-        
     },
     
     mounted() {
-        this.getCart();
+
+
     }
 });
